@@ -1,7 +1,25 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block body %}
 
-    <h1>taberu_list.html</h1>
+    <h1>レシピ一覧</h1>
+
+    {% for taberu in taberu_list %}
+
+    <div class="media">
+        <img src="{% static 'images/main_image.jpg' %}" class="align-self-center mr-3" alt="..." width="120">
+        <div class="media-body">
+            <h5 class="mt-0">{{ taberu.title }}</h5>
+            <p>{{ taberu.description }}</p>
+        </div>
+    </div>
+
+    {% if not forloop.last %}
+        <hr>
+    {% endif %}
+
+    {% endfor %}
+
     
 {% endblock body %}
