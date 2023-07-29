@@ -16,9 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from Taberu.views import TaberuListView
+
+from lib.views import IndexTemplateView
+from Taberu.views import TaberuListView,TaberuCreateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', TaberuListView.as_view(), name="index"),
+    path('taberu/', TaberuListView.as_view(), name="taberu-index"),
+    path('taberu/create', TaberuCreateView.as_view(), name="taberu-create"),
+    path('', IndexTemplateView.as_view(), name="index"),
 ]
