@@ -10,7 +10,9 @@
     <div class="media">
         <img src="{% static 'images/main_image.jpg' %}" class="align-self-center mr-3" alt="..." width="120">
         <div class="media-body">
-            <h5 class="mt-0">{{ taberu.title }}</h5>
+            <a href="{% url 'taberu:detail' taberu.id %}">
+                <h5 class="mt-0">{{ taberu.title }}</h5>
+            </a>
             <p>{{ taberu.description }}</p>
         </div>
     </div>
