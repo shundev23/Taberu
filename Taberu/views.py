@@ -1,3 +1,5 @@
+from typing import Any
+from django.db.models.query import QuerySet
 from django.forms.models import BaseModelForm
 from django.http import HttpResponse
 from django.shortcuts import render
@@ -11,6 +13,15 @@ from .models import Taberu
 
 class TaberuListView(ListView):
     model = Taberu
+
+    def get_queryset(self):
+        qs = Taberu.objects.all()
+        keyword = self.request.GET.get("q")
+
+        if(keyword):
+            qs = qs.filter(title__contains=keyword)
+
+        return qs
 
 class TaberuCreateView(CreateView):
     model = Taberu
