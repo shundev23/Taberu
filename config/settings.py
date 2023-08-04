@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'Taberu',
     
     'crispy_forms',
+    'imagekit',
     'crispy_bootstrap4',
 ]
 
@@ -132,5 +133,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_DIRS = [
     BASE_DIR / Path("assets")
 ]
+
+MEDIA_ROOT = BASE_DIR / Path('media')
+MEDIA_URL = '/media/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

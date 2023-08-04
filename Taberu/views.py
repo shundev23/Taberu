@@ -14,7 +14,7 @@ class TaberuListView(ListView):
 
 class TaberuCreateView(CreateView):
     model = Taberu
-    fields = ["title","content","description"]
+    fields = ["title","content","description","image",]
     success_url = reverse_lazy("taberu:index")
 
     def form_valid(self, form):
@@ -34,7 +34,7 @@ class TaberuDetailView(DetailView):
 
 class TaberuUpdateView(UpdateView):
     model = Taberu
-    fields = ["title","content","description"]
+    fields = ["title","content","description","image",]
     
     def get_success_url(self):
         pk = self.kwargs.get("pk")

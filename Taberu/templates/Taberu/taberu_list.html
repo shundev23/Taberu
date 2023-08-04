@@ -8,7 +8,16 @@
     {% for taberu in taberu_list %}
 
     <div class="media">
-        <img src="{% static 'images/main_image.jpg' %}" class="align-self-center mr-3" alt="..." width="120">
+
+        {% if taberu.image %}
+                <img src="{{ taberu.image.url }}"
+                     class="align-self-center mr-3" alt="..." width="120">
+        {% else %}
+                <img src="{% static 'images/main_image.jpg' %}"
+                     class="align-self-center mr-3" alt="..." width="120">
+        {% endif %}
+
+
         <div class="media-body">
             <a href="{% url 'taberu:detail' taberu.id %}">
                 <h5 class="mt-0">{{ taberu.title }}</h5>
