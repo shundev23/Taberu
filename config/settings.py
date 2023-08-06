@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'Taberu',
+    'comment',
     
     'crispy_forms',
     'imagekit',

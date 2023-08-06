@@ -8,7 +8,9 @@ from lib.views import IndexTemplateView
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    path('taberu/', include("Taberu.urls")),
+    path('Taberu/', include("Taberu.urls", namespace="Taberu")),
+
+     path('comment/', include("comment.urls", namespace="comment")),
     
     path('', IndexTemplateView.as_view(), name="index"),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

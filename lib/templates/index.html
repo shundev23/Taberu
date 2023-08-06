@@ -15,7 +15,7 @@
     <h1 class="font-weight-light">{{ taberu_top.title }}</h1>
     <p>{{ taberu_top.description }}</p>
        {% if taberu_top %}
-         <a class="btn btn-primary" href="{% url 'taberu:detail' taberu_top.id %}">詳細</a>
+         <a class="btn btn-primary" href="{% url 'Taberu:detail' taberu_top.id %}">詳細</a>
        {% endif %}
   </div>
   <!-- /.col-md-4 -->
@@ -44,7 +44,7 @@
                         <p class="card-text">{{ taberu.description }}</p>
                     </div>
                     <div class="card-footer">
-                        <a href="{% url 'taberu:detail' taberu.id %}" class="btn btn-primary btn-sm">詳しく見る</a>
+                        <a href="{% url 'Taberu:detail' taberu.id %}" class="btn btn-primary btn-sm">詳しく見る</a>
                     </div>
                 </div>
             </div>

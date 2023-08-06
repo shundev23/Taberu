@@ -2,7 +2,7 @@ from django.urls import path
 from Taberu.views import (TaberuListView, TaberuCreateView, 
                           TaberuDetailView, TaberuUpdateView, TaberuDeleteView)
 
-app_name = "taberu"
+app_name = "Taberu"
 
 urlpatterns = [
     path('', TaberuListView.as_view(), name="index"),
