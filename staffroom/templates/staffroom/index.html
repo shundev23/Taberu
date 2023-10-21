@@ -9,10 +9,11 @@
             </div>
             <div class="card-body">
                 <table class="table">
-                    {% for recipe in taberu_list%}
+                    {% for taberu in taberu_list %}
                     <tr>
                         <th>{{taberu.title}}</th>
                     </tr>
+                    {% endfor %}
                 </table>
             </div>
         </div>

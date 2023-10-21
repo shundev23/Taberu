@@ -9,9 +9,9 @@ class StaffroomTemplateView(TemplateView):
         context = super().get_context_data(**kwargs)
 
         if self.request.user.is_authenticated:
-            context["teberu_list"] = Taberu.objects.filter(user=self.request.user)
+            context["taberu_list"] = Taberu.objects.filter(user=self.request.user)
         else:
-            context["teberu_list"] = None
+            context["taberu_list"] = None
 
         return context
     
