@@ -9,14 +9,21 @@
             </div>
             <div class="card-body">
                 <table class="table">
-                    {% for taberu in taberu_list %}
-                    <tr>
-                        <th>{{taberu.title}}</th>
-                    </tr>
+                    {% for Taberu in Taberu_list %}
+                        <tr>
+                            <th>{{ Taberu.title }}</th>
+                            <th>
+                                <a href="{% url 'Taberu:detail' recipe.id %}"
+                                   class="btn btn-primary">詳細</a>
+                                <a href="{% url 'staffroom:Taberu:update' recipe.id %}"
+                                   class="btn btn-secondary">編集</a>
+                            </th>
+                        </tr>
                     {% endfor %}
                 </table>
             </div>
         </div>
+        
     </div>
 
 {% endblock %}

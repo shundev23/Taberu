@@ -4806,7 +4806,7 @@ input[type="button"].btn-block {
 .card-header {
   padding: 0.75rem 1.25rem;
   margin-bottom: 0;
-  background-color: rgba(0, 0, 0, 0.03);
+  background-color: darkgray;
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
 }
 
@@ -6727,7 +6727,7 @@ a.close.disabled {
 }
 
 .bg-primary {
-  background-color: #007bff !important;
+  /* background-color: #007bff !important; */
 }
 
 a.bg-primary:hover, a.bg-primary:focus,
@@ -8269,7 +8269,7 @@ button.bg-dark:focus {
 
 .mt-5,
 .my-5 {
-  margin-top: 3rem !important;
+  margin-top: 15rem !important;
 }
 
 .mr-5,
