@@ -11,6 +11,17 @@ from django.contrib import messages
 from .models import Taberu
 from comment.forms import CommentForm
 
+from rest_framework.views import APIView
+from rest_framework.response import Response
+
+class TestAPIView(APIView):
+    def get(self, request, *args, **kwargs):
+        data = {"message": "Hello from TestAPIView"}
+        return Response(data)
+
+    def post(self, request, *args, **kwargs):
+        return Response({"status": "POST request received"})
+
 class TaberuListView(ListView):
     model = Taberu
 
@@ -25,7 +36,7 @@ class TaberuListView(ListView):
 
 class TaberuDetailView(DetailView):
     model = Taberu
-    
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 

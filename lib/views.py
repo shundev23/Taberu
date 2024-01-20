@@ -8,11 +8,11 @@ class IndexTemplateView(TemplateView):
         context = super().get_context_data(**kwargs)
 
         context['taberu_list'] = Taberu.objects.order_by("-created")
-        
+
         # テスト実行時、データベースにデータがないのでエラーハンドリング
         try:
             context['taberu_top'] = Taberu.objects.order_by('?')[0]
         except IndexError:
-            context['Taberu_top'] = None        
+            context['Taberu_top'] = None
 
         return context
