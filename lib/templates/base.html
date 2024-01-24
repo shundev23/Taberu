@@ -5,6 +5,7 @@
 <head>
 
   <meta charset="utf-8">
+  <link rel="icon" href="/frontend/public/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
@@ -47,7 +48,7 @@
 
   <!-- Page Content -->
   <div class="container">
-    
+
     {% if messages %}
         {% for message in messages %}
             <div{% if message.tags %} class="my-3 alert alert-{% if message.tags == "error" %}danger{% else %}{{ message.tags }}{% endif %} alert-dismissible fade show"{% endif %} role="alert">
@@ -60,7 +61,7 @@
     {% endif %}
 
     {% block body %}{% endblock %}
-    
+
   </div>
   <!-- /.container -->
 

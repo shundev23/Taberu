@@ -28,6 +28,6 @@ class Taberu(models.Model):
     class Meta:
         verbose_name = "タベル"
         verbose_name_plural = "タベル"
-    
+
     def __str__(self):
         return self.title

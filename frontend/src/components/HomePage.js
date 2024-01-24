@@ -4,7 +4,7 @@ import './HomePage.css'; // HomePage-specific styles
 function HomePage() {
   async function handleClick(){
     try{
-      const response = await fetch('http://localhost:8000/Taberu/test/');
+      const response = await fetch('http://127.0.0.1:8000/Taberu/');
       console.log(response);
     }catch(error){
       console.error("Error during fetch: ", error);
@@ -12,7 +12,8 @@ function HomePage() {
   }
   return (
     <div className="home">
-      <h1 onClick={handleClick}>Welcome to the Taberu App</h1>
+      <h1>Welcome to the Taberu App</h1>
+      <h2>Login</h2>
       <p>This is the Taberu. Click the links above to navigate.</p>
     </div>
   );

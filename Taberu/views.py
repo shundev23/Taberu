@@ -11,6 +11,8 @@ from django.contrib import messages
 from .models import Taberu
 from comment.forms import CommentForm
 
+from rest_framework.generics import ListAPIView
+from rest_framework import serializers
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
@@ -22,17 +24,23 @@ class TestAPIView(APIView):
     def post(self, request, *args, **kwargs):
         return Response({"status": "POST request received"})
 
-class TaberuListView(ListView):
+class TaberuSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Taberu
+        fields = '__all__'
+
+
+class TaberuListView(ListAPIView):
     model = Taberu
+    queryset = Taberu.objects.all()
+    serializer_class = TaberuSerializer
 
     def get_queryset(self):
-        qs = Taberu.objects.all()
-        keyword = self.request.GET.get("q")
-
-        if(keyword):
-            qs = qs.filter(title__contains=keyword)
-
-        return qs
+        queryset = super().get_queryset()
+        keyword = self.request.query_params.get('q', None)
+        if(keyword is not None):
+            queryset = queryset.filter(title__icontains=keyword)
+        return queryset
 
 class TaberuDetailView(DetailView):
     model = Taberu
