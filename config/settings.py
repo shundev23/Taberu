@@ -1,3 +1,4 @@
+import os
 """
 Django settings for config project.
 
@@ -93,8 +94,15 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
+        # 'ENGINE': 'django.db.backends.postgresql',
+        # 'NAME': 'TaberuMaster',
+        # 'USER': 'postgres',
+        # 'PASSWORD': os.environ.get('DB_PASSWORD'),
+        # 'HOST': 'localhost',
+        # 'PORT': '5432',
     }
 }
+
 
 
 # Password validation

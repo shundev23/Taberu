@@ -6,31 +6,27 @@ function Taberu() {
     const [taberuList, setTaberuList] = useState([]);
 
     useEffect(() => {
-      const fetchData = async () => {
-          try {
-              const response = await fetch('http://127.0.0.1:8000/');
-              if (!response.ok) {
-                  throw new Error("サーバーエラー");
-              }
-              const data = await response.json();
-              console.log(data); // レスポンスデータの確認
-    
-              if (data.taberu_top && data.taberu_top.length > 0) {
-                  setTaberuTop(data.taberu_top[0]);
-              }
-    
-              if (data.taberu_list) {
-                  setTaberuList(data.taberu_list);
-              }
-          } catch (error) {
-              console.error("APIからのデータ取得中に失敗しました。:", error);
-          }
-      };
-    
-      fetchData();
+        const fetchData = async () => {
+            try {
+                const response = await fetch('http://127.0.0.1:8000/');
+                if (!response.ok) {
+                    throw new Error("サーバーエラー");
+                }
+                const data = await response.json();
+                console.log(data); // レスポンスデータの確認
+
+                if (data.taberu_top && data.taberu_top.length > 0) {
+                    setTaberuTop(data.taberu_top[0]);
+                }
+                if (data.taberu_list) {
+                    setTaberuList(data.taberu_list);
+                }
+            } catch (error) {
+                console.error("APIからのデータ取得中に失敗しました。:", error);
+            }
+        };
+        fetchData();
     }, []);
-    
-  
 
     return (
         <div className="Taberu-Top">
