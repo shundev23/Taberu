@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
 function Login() {
-    // HTML形式のレスポンスデータを保存するための状態
     const [htmlContent, setHtmlContent] = useState(null);
     const [error, setError] = useState(null);
 
@@ -12,8 +11,8 @@ function Login() {
                 if (!response.ok) {
                     throw new Error("Server Error");
                 }
-                const html = await response.text(); // HTMLとしてレスポンスデータを取得
-                setHtmlContent(html); // 状態にHTMLデータを保存
+                const html = await response.text();
+                setHtmlContent(html);
             } catch (error) {
                 console.error("failured of getting API Data", error);
                 setError(error.toString());

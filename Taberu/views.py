@@ -16,14 +16,6 @@ from rest_framework import serializers
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
-class TestAPIView(APIView):
-    def get(self, request, *args, **kwargs):
-        data = {"message": "Hello from TestAPIView"}
-        return Response(data)
-
-    def post(self, request, *args, **kwargs):
-        return Response({"status": "POST request received"})
-
 class TaberuSerializer(serializers.ModelSerializer):
     class Meta:
         model = Taberu
