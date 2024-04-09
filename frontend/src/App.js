@@ -13,12 +13,14 @@ function App() {
         <nav>
           <ul className="navbar">
           <div className="logo">
-            <Link to="/">AppLogo</Link>
+            <Link to="/">Taberu.その日の食事から広がる世界を楽しもう</Link>
           </div>
+          <div className='right-menu'>
             <li><Link to="/">Home</Link></li>
             <li><Link to="/about">About</Link></li>
             <li><Link to="/Taberu">Taberu</Link></li>
             <li><Link to="/login">Login</Link></li>
+            </div>
           </ul>
         </nav>
         <Routes>
