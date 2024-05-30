@@ -40,11 +40,6 @@ jobs:
             cd frontend
             npm install
       - run:
-          name: List files in src directory
-          command: |
-            cd src
-            ls -la
-      - run:
           name: Run React tests
           command: |
             cd frontend
