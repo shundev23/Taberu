@@ -29,6 +29,16 @@ jobs:
     steps:
       - checkout
       - run:
+          name: List files in working directory
+          command: ls -la
+      - run:
+          name: Verify package.json existence
+          command: |
+            if [ ! -f package.json ]; then
+              echo "package.json not found in $(pwd)"
+              exit 1
+            fi
+      - run:
           name: Install Node.js dependencies
           command: npm install
       - run:
