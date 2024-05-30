@@ -1,169 +1,60 @@
-# Python
-*.pyc
-*.pyo
-*.pyd
-__pycache__/
-*.env
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
-
-# Django
+# Django-specific
 *.log
 *.pot
 *.pyc
-*.pyo
 __pycache__/
-staticfiles/
+db.sqlite3
 media/
+staticfiles/
 
-# Django settings local
-local_settings.py
-
-# Django migrations
-*/migrations/*
-
-# macOS
-.DS_Store
-
-# Windows
-Thumbs.db
-ehthumbs.db
-Desktop.ini
-
-# npm
+# Node modules
 node_modules/
-npm-debug.log
-yarn-error.log
-.yarn-integrity
 
 # Logs
-logs/
+logs
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
 # Dependency directories
-node_modules/
+bower_components/
 jspm_packages/
-__pycache__/
 
-# Build directories
-build/
+# Compiled source
 dist/
+build/
 
-# IDEs
+# Coverage directory used by tools like istanbul
+coverage/
+
+# Environment variables
+.env
+
+# IDEs and editors
 .idea/
 .vscode/
 *.sublime-project
 *.sublime-workspace
 
-# Environment variables
-.env
-
-# Coverage directory used by coverage.py
-htmlcov/
-
-# pytest
-.cache/
-
-# My local virtual environments
+# Virtual environments
 venv/
 env/
-venv.bak/
-env.bak/
 
-# pyenv
-.python-version
+# Python packages
+*.egg
+*.egg-info/
+dist/
+build/
+*.pyo
+*.pyd
+.Python
 
-# Environments
-.env
-.env.*
+# MacOS files
+.DS_Store
 
-# .mypy_cache
-.mypy_cache/
-.dmypy.json
-dmypy.json
-
-# Flask instance folder
-instance/
-
-# Flask log files
-flask.log
-
-# celery beat schedule file
-celerybeat-schedule
-
-# dotenv
-.env
-
-# pipenv
-Pipfile.lock
-
-# PEP 582; used by e.g. github.com/David-OConnor/pyflow
-__pypackages__/
-
-# pyright
-pyrightconfig.json
-
-# Testing
-.tox/
-.nox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-.hypothesis/
-.pytest_cache/
-cover/
-
-# Jupyter Notebook
-.ipynb_checkpoints
-
-# mypy
-.mypy_cache/
-
-# pytest
-.cache/
-
-# Pyre type checker
-.pyre/
-
-# Celery beat schedule file
-celerybeat-schedule
-
-# SageMath parsed files
-*.sage.py
-
-# Environments
-.env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
-
-# Environments variable file
-.env
-
-# Spyder project settings
-.spyderproject
-.spyproject
-
-# Rope project settings
-.ropeproject
-
-# mkdocs documentation
-/site
-
-# mypy
-.mypy_cache/
-
-# Pylint
-.pylint.d/
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.swp
