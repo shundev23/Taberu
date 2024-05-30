@@ -24,7 +24,7 @@ jobs:
           name: Run Django tests
           command: python manage.py test
 
-    frontend-test:
+  frontend-test:
     executor: node-executor
     steps:
       - checkout
@@ -46,7 +46,6 @@ jobs:
           command: |
             cd Taberu
             npm test -- --watchAll=false
-
 
 workflows:
   version: 2.1
