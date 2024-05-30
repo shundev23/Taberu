@@ -9,11 +9,11 @@
     "dev": "webpack --mode development --watch",
     "build": "webpack --mode production"
   },
-  "jest":{
-"transform":{
-  "^.+\\.(js|jsx)$": "babel-jest"
-}
-},
+  "jest": {
+    "transform": {
+      "^.+\\.(js|jsx)$": "babel-jest"
+    }
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
