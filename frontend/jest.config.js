@@ -1,14 +1,14 @@
-const config = {
-  "roots": [
-    "<rootDir>/src"
+module.exports = {
+  transformIgnorePatterns: [
+    "node_modules/(?!(.*@testing-library/dom)/)"
   ],
-  "testMatch": [
-    "**/__tests__/**/*.+(ts|tsx|js)",
-    "**/?(*.)+(spec|test).+(ts|tsx|js)"
-  ],
-  "transform": {
-    "^.+\\.(ts|tsx)$": "ts-jest"
-  },
+  transform: {
+    "^.+\\.jsx?$": "babel-jest"
+  }
 };
 
-export default config;
+module.exports = {
+  transform: {
+    "^.+\\.mjs$": "babel-jest"
+  }
+};
