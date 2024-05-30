@@ -42,13 +42,13 @@ jobs:
       - run:
           name: List files in src directory
           command: |
-            cd frontend/src
+            cd src
             ls -la
       - run:
           name: Run React tests
           command: |
             cd frontend
-            npm test -- --watchAll=false
+            npm test -- --watchAll=false --detectOpenHandles
 
 workflows:
   version: 2.1

@@ -8,7 +8,7 @@ function Taberu() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('http://127.0.0.1:8000/');
+                const response = await fetch('http://127.0.0.1:8000/Taberu');
                 if (!response.ok) {
                     throw new Error("サーバーエラー");
                 }
@@ -51,7 +51,7 @@ function Taberu() {
 
             <div className="card text-white bg-secondary my-5 py-4 text-center">
                 <div className="card-body">
-                    <p className="text-white m-0">今日は何を食べようか。</p>
+                    <p className="text-white m-0">今日はどのオムライスを食べようか。</p>
                 </div>
             </div>
 
