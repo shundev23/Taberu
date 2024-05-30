@@ -24,22 +24,32 @@ jobs:
           name: Run Django tests
           command: python manage.py test
 
-  frontend-test:
+    frontend-test:
     executor: node-executor
     steps:
       - checkout
       - run:
-          name: Navigate to Taberu directory
-          command: cd Taberu
+          name: Ensure correct directory
+          command: |
+            cd Taberu
+            if [ ! -f package.json ]; then
+              echo "package.json not found"
+              exit 1
+            fi
       - run:
           name: Install Node.js dependencies
-          command: npm install
+          command: |
+            cd Taberu
+            npm install
       - run:
           name: Run React tests
-          command: npm test -- --watchAll=false
+          command: |
+            cd Taberu
+            npm test -- --watchAll=false
+
 
 workflows:
-  version: 2
+  version: 2.1
   build-and-test:
     jobs:
       - backend-test
