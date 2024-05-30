@@ -32,10 +32,18 @@ jobs:
           name: Navigate to frontend directory
           command: cd frontend
       - run:
+          name: List files in frontend directory
+          command: ls -la
+      - run:
           name: Install Node.js dependencies
           command: |
             cd frontend
             npm install
+      - run:
+          name: List files in src directory
+          command: |
+            cd frontend/src
+            ls -la
       - run:
           name: Run React tests
           command: |
