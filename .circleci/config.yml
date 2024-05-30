@@ -29,22 +29,14 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Ensure correct directory
+          name: Install and Test Frontend
           command: |
             cd Taberu
             if [ ! -f package.json ]; then
               echo "package.json not found"
               exit 1
             fi
-      - run:
-          name: Install Node.js dependencies
-          command: |
-            cd Taberu
             npm install
-      - run:
-          name: Run React tests
-          command: |
-            cd Taberu
             npm test -- --watchAll=false
 
 workflows:
