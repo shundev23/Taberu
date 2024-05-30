@@ -29,15 +29,11 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install and Test Frontend
-          command: |
-            cd ..
-            if [ ! -f package.json ]; then
-              echo "package.json not found"
-              exit 1
-            fi
-            npm install
-            npm test -- --watchAll=false
+          name: Install Node.js dependencies
+          command: npm install
+      - run:
+          name: Run React tests
+          command: npm test -- --watchAll=false
 
 workflows:
   version: 2.1
