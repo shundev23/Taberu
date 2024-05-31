@@ -16,9 +16,6 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Clear Pip Cache
-          command: pip cache purge
-      - run:
           name: Clear Old Dependencies
           command: rm -rf venv
       - run:
