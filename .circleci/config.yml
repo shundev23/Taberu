@@ -12,17 +12,29 @@ executors:
 
 jobs:
   backend-test:
-    executor: python-executor
+    docker:
+      - image: circleci/python:3.8
     steps:
       - checkout
       - run:
-          name: Install Python dependencies
+          name: Clear Pip Cache
+          command: pip cache purge
+      - run:
+          name: Clear Old Dependencies
+          command: rm -rf .venv
+      - run:
+          name: Set Up Virtual Environment
+          command: python -m venv .venv
+      - run:
+          name: Install Dependencies
           command: |
-            python -m pip install --upgrade pip
+            . .venv/bin/activate
             pip install -r requirements.txt
       - run:
-          name: Run Django tests
-          command: python manage.py test
+          name: Run Tests
+          command: |
+            . .venv/bin/activate
+            pytest
 
   frontend-test:
     executor: node-executor
