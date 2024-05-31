@@ -3,7 +3,7 @@ version: 2.1
 executors:
   python-executor:
     docker:
-      - image: circleci/python:3.9
+      - image: circleci/python:3.8
     working_directory: ~/repo
   node-executor:
     docker:
@@ -12,8 +12,7 @@ executors:
 
 jobs:
   backend-test:
-    docker:
-      - image: circleci/python:3.8
+    executor: python-executor
     steps:
       - checkout
       - run:
@@ -30,7 +29,7 @@ jobs:
           command: |
             . venv/bin/activate
             pip install --upgrade pip
-            pip install -r requirements.txt
+            pip install -r requirements.txt || { echo "pip install failed"; exit 1; }
       - run:
           name: List Installed Packages
           command: |
