@@ -32,18 +32,14 @@ jobs:
           name: Navigate to frontend directory
           command: cd frontend
       - run:
-          name: List files in frontend directory
-          command: ls -la
+          name: Clear NPM Cache
+          command: npm cache clean --force
       - run:
           name: Install Node.js dependencies
-          command: |
-            cd frontend
-            npm install
+          command: npm install
       - run:
           name: Run React tests
-          command: |
-            cd frontend
-            npm test -- --watchAll=false --detectOpenHandles
+          command: npm test -- --watchAll=false --detectOpenHandles
 
 workflows:
   version: 2.1
