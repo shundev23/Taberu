@@ -21,19 +21,25 @@ jobs:
           command: pip cache purge
       - run:
           name: Clear Old Dependencies
-          command: rm -rf .venv
+          command: rm -rf venv
       - run:
           name: Set Up Virtual Environment
-          command: python -m venv .venv
+          command: python -m venv venv
       - run:
-          name: Install Dependencies
+          name: Activate Virtual Environment and Install Dependencies
           command: |
-            . .venv/bin/activate
+            . venv/bin/activate
+            pip install --upgrade pip
             pip install -r requirements.txt
+      - run:
+          name: List Installed Packages
+          command: |
+            . venv/bin/activate
+            pip list
       - run:
           name: Run Tests
           command: |
-            . .venv/bin/activate
+            . venv/bin/activate
             pytest
 
   frontend-test:
