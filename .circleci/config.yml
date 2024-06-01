@@ -33,10 +33,15 @@ jobs:
             . venv/bin/activate
             pip list
       - run:
+          name: Set DJANGO_SETTINGS_MODULE
+          command: |
+            echo "export DJANGO_SETTINGS_MODULE=Taberu.settings" >> $BASH_ENV
+            source $BASH_ENV
+      - run:
           name: Run Tests
           command: |
             . venv/bin/activate
-            pytest
+            pytest --maxfail=5 --disable-warnings
 
   frontend-test:
     executor: node-executor
