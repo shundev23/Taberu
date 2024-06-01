@@ -30,6 +30,7 @@ function App() {
           <Route path="/Taberu" element={<Taberu />} />
         </Routes>
         {/* for passing tests in tests */}
+        {/* for passing tests in tests */}
         <a href="https://reactjs.org">Learn React</a>
       </div>
     </Router>
