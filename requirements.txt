@@ -3,3 +3,4 @@ djangorestframework==3.14.0
 pytest==6.2.4
 pytest-django
 django-cors-headers
+django-crispy-forms
