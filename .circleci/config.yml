@@ -35,7 +35,7 @@ jobs:
       - run:
           name: Set DJANGO_SETTINGS_MODULE
           command: |
-            echo "export DJANGO_SETTINGS_MODULE=Taberu.settings" >> $BASH_ENV
+            echo "export DJANGO_SETTINGS_MODULE=config.settings" >> $BASH_ENV
             source $BASH_ENV
       - run:
           name: Run Tests
