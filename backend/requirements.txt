@@ -6,3 +6,4 @@ django-cors-headers
 django-crispy-forms
 django-imagekit
 crispy_bootstrap5
+psycopg2-binary
