@@ -16,17 +16,14 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Clear Old Dependencies
-          command: rm -rf venv
-      - run:
-          name: Set Up Virtual Environment
-          command: python -m venv venv
-      - run:
-          name: Activate Virtual Environment and Install Dependencies
+          name: Install dependencies
           command: |
+            cd backend
+            rm -rf venv
+            python -m venv venv
             . venv/bin/activate
             pip install --upgrade pip
-            pip install -r requirements.txt || { echo "pip install failed"; exit 1; }
+            pip install -r requirements.txt
       - run:
           name: List Installed Packages
           command: |
