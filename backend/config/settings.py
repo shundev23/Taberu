@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     'Taberu',
     'comment',
     'staffroom',
-    'frontend',
+    # 'frontend',
 
     'crispy_forms',
     'imagekit',
