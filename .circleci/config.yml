@@ -8,7 +8,7 @@ executors:
         environment:
             POSTGRES_USER: postgres
             POSTGRES_DB: TaberuMaster
-            POSTGRES_PASSWORD: $POSTGRES_PASSWORD  # 環境変数を参照
+            POSTGRES_PASSWORD: $POSTGRES_PASSWORD
     working_directory: ~/repo
   node-executor:
     docker:
@@ -35,12 +35,7 @@ jobs:
             . venv/bin/activate
             pip install --upgrade pip
             pip install -r requirements.txt
-            pip install pytest  # pytestをインストール
-      # - run:
-      #     name: List Installed Packages
-      #     command: |
-      #       . venv/bin/activate
-      #       pip list
+            pip install pytest
       - run:
           name: Set DJANGO_SETTINGS_MODULE
           command: |
