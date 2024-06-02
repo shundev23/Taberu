@@ -9,9 +9,9 @@ from django.views.generic import TemplateView
 from lib.views import IndexTemplateView,IndexAPIView
 
 urlpatterns = [
-    path('Taberu/', include("Taberu.urls", namespace="Taberu")),
-    path('comment/', include("comment.urls", namespace="comment")),
-    path('staffroom/', include("staffroom.urls", namespace="staffroom")),
+    path('/backend/Taberu/', include("Taberu.urls", namespace="Taberu")),
+    path('/backend/comment/', include("comment.urls", namespace="comment")),
+    path('/backend/staffroom/', include("staffroom.urls", namespace="staffroom")),
 
     path('admin/', admin.site.urls),
     re_path(r'^.*$', TemplateView.as_view(template_name='index.html')),
