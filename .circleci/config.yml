@@ -38,7 +38,9 @@ jobs:
       - run:
           name: Run Tests
           command: |
-            pytest --maxfail=5 --disable-warnings
+            cd backend
+            . venv/bin/activate
+            venv/bin/pytest
 
   frontend-test:
     executor: node-executor
