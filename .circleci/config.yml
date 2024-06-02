@@ -24,11 +24,11 @@ jobs:
             . venv/bin/activate
             pip install --upgrade pip
             pip install -r requirements.txt
-      - run:
-          name: List Installed Packages
-          command: |
-            . venv/bin/activate
-            pip list
+      # - run:
+      #     name: List Installed Packages
+      #     command: |
+      #       . venv/bin/activate
+      #       pip list
       - run:
           name: Set DJANGO_SETTINGS_MODULE
           command: |
