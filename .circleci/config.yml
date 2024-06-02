@@ -37,7 +37,6 @@ jobs:
       - run:
           name: Run Tests
           command: |
-            . venv/bin/activate
             pytest --maxfail=5 --disable-warnings
 
   frontend-test:
