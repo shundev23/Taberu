@@ -24,6 +24,7 @@ jobs:
             . venv/bin/activate
             pip install --upgrade pip
             pip install -r requirements.txt
+            pip install pytest  # pytestをインストール
       # - run:
       #     name: List Installed Packages
       #     command: |
