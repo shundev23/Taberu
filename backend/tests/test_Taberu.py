@@ -7,7 +7,7 @@ from Taberu.models import Taberu
 
 class TestTaberu(TestCase):
 
-    fixtures = ["Taberu.json","user.json"]
+    fixtures = ["fixtures/Taberu.json","fixtures/user.json"]
 
     def setUp(self):
         # queryset発行-- Taberu.objects.all()
