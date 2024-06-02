@@ -5,6 +5,10 @@ executors:
     docker:
       - image: circleci/python:3.10
       - image: circleci/postgres:13.3
+        environment:
+            POSTGRES_USER: postgres
+            POSTGRES_DB: TaberuMaster
+            POSTGRES_PASSWORD: $POSTGRES_PASSWORD  # 環境変数を参照
     working_directory: ~/repo
   node-executor:
     docker:
