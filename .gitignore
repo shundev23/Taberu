@@ -58,3 +58,28 @@ tmp/
 temp/
 *.tmp
 *.swp
+
+# Docker関連のファイルやディレクトリを無視する
+
+# Dockerイメージやコンテナのキャッシュ
+**/Dockerfile
+**/docker-compose.yml
+
+# Dockerコンテナが生成するファイルやディレクトリ
+**/.env
+**/.dockerignore
+**/.docker
+
+# Dockerボリュームのマウント先（例えば、データベースのデータディレクトリなど）
+**/data/
+**/logs/
+**/db_data/
+
+# Dockerが生成する一時ファイル
+**/tmp/
+**/*.pid
+**/*.sock
+
+# その他のDocker関連ファイル
+**/docker-compose.override.yml
+**/docker-compose.dev.yml
