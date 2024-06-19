@@ -1,46 +1,31 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 
-const Login = () => {
+const Register = () => {
     const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [csrfToken, setCsrfToken] = useState('');
+    const [password1, setPassword1] = useState('');
+    const [password2, setPassword2] = useState('');
     const [error, setError] = useState('');
 
-    useEffect(() => {
-        const getCsrfToken = async () => {
-            try {
-                const response = await axios.get('http://localhost:8001/api/get-csrf-token/', { withCredentials: true });
-                const csrfToken = document.cookie.split('; ')
-                    .find(row => row.startsWith('csrftoken'))
-                    .split('=')[1];
-                setCsrfToken(csrfToken);
-            } catch (error) {
-                console.error('Failed to get CSRF token:', error);
-            }
-        };
-
-        getCsrfToken();
-    }, []);
-
-    const handleLogin = async (e) => {
+    const handleRegister = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:8001/api/auth/login/', {
+            const response = await axios.post('http://localhost:8001/api/auth/registration/', {
                 email,
-                password
+                password1,
+                password2
             }, {
                 headers: {
-                    'X-CSRFToken': csrfToken
+                    'Content-Type': 'application/json'
                 },
                 withCredentials: true
             });
-            localStorage.setItem('token', response.data.key);
-            window.location.href = '/search';
+            console.log('User registered successfully:', response.data);
+            setError('');
         } catch (error) {
-            console.error('Login error:', error.response);
+            console.error('Registration error:', error.response);
             if (error.response && error.response.status === 400) {
-                setError('Invalid credentials. Please try again.');
+                setError('Registration failed. Please check the provided information.');
             } else {
                 setError('An error occurred. Please try again later.');
             }
@@ -49,8 +34,8 @@ const Login = () => {
 
     return (
         <div style={styles.container}>
-            <h2 style={styles.title}>ログイン</h2>
-            <form onSubmit={handleLogin} style={styles.form}>
+            <h2 style={styles.title}>ユーザー登録</h2>
+            <form onSubmit={handleRegister} style={styles.form}>
                 <input
                     type="email"
                     placeholder="メールアドレス"
@@ -61,12 +46,19 @@ const Login = () => {
                 <input
                     type="password"
                     placeholder="パスワード"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    value={password1}
+                    onChange={(e) => setPassword1(e.target.value)}
+                    style={styles.input}
+                />
+                <input
+                    type="password"
+                    placeholder="パスワード（確認）"
+                    value={password2}
+                    onChange={(e) => setPassword2(e.target.value)}
                     style={styles.input}
                 />
                 {error && <p style={styles.error}>{error}</p>}
-                <button type="submit" style={styles.button}>ログイン</button>
+                <button type="submit" style={styles.button}>登録</button>
             </form>
         </div>
     );
@@ -114,4 +106,4 @@ const styles = {
     },
 };
 
-export default Login;
+export default Register;

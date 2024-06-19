@@ -4,6 +4,9 @@ import Home from './components/Home';
 import About from './components/About';
 import Taberu from './components/Taberu';
 import Login from './components/Login';
+import Search from './components/Search';
+import Register from './components/Register';
+import Auth from './components/Auth';
 import './App.css';
 
 function App() {
@@ -20,13 +23,15 @@ function App() {
             <li><Link to="/about">About</Link></li>
             <li><Link to="/Taberu">Taberu</Link></li>
             <li><Link to="/login">Login</Link></li>
+            <li><Link to="/Search">Search</Link></li>
             </div>
           </ul>
         </nav>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<Auth />} />
+          <Route path="/search" element={<Search />} />
           <Route path="/Taberu" element={<Taberu />} />
         </Routes>
         {/* for passing tests in tests */}

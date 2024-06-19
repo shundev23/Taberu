@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const Login = () => {
+const Auth = () => {
+    const [isLogin, setIsLogin] = useState(true);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [password2, setPassword2] = useState('');
     const [csrfToken, setCsrfToken] = useState('');
     const [error, setError] = useState('');
 
@@ -38,9 +40,32 @@ const Login = () => {
             localStorage.setItem('token', response.data.key);
             window.location.href = '/search';
         } catch (error) {
-            console.error('Login error:', error.response);
+            console.error(error);
+            setError('ログインに失敗しました。メールアドレスとパスワードを確認してください。');
+        }
+    };
+
+    const handleRegister = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await axios.post('http://localhost:8001/api/auth/registration/', {
+                email,
+                password1: password,
+                password2
+            }, {
+                headers: {
+                    'X-CSRFToken': csrfToken,
+                    'Content-Type': 'application/json'
+                },
+                withCredentials: true
+            });
+            console.log('User registered successfully:', response.data);
+            setError('');
+            setIsLogin(true); // 登録後にログイン画面に戻る
+        } catch (error) {
+            console.error('Registration error:', error.response);
             if (error.response && error.response.status === 400) {
-                setError('Invalid credentials. Please try again.');
+                setError('Registration failed. Please check the provided information.');
             } else {
                 setError('An error occurred. Please try again later.');
             }
@@ -49,8 +74,8 @@ const Login = () => {
 
     return (
         <div style={styles.container}>
-            <h2 style={styles.title}>ログイン</h2>
-            <form onSubmit={handleLogin} style={styles.form}>
+            <h2 style={styles.title}>{isLogin ? 'ログイン' : 'ユーザー登録'}</h2>
+            <form onSubmit={isLogin ? handleLogin : handleRegister} style={styles.form}>
                 <input
                     type="email"
                     placeholder="メールアドレス"
@@ -65,9 +90,24 @@ const Login = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     style={styles.input}
                 />
+                {!isLogin && (
+                    <input
+                        type="password"
+                        placeholder="パスワード（確認）"
+                        value={password2}
+                        onChange={(e) => setPassword2(e.target.value)}
+                        style={styles.input}
+                    />
+                )}
                 {error && <p style={styles.error}>{error}</p>}
-                <button type="submit" style={styles.button}>ログイン</button>
+                <button type="submit" style={styles.button}>{isLogin ? 'ログイン' : '登録'}</button>
             </form>
+            <p style={styles.toggleText}>
+                {isLogin ? "アカウントをお持ちでないですか？ " : "既にアカウントをお持ちですか？ "}
+                <span onClick={() => setIsLogin(!isLogin)} style={styles.toggleLink}>
+                    {isLogin ? 'Sign Up' : 'Login'}
+                </span>
+            </p>
         </div>
     );
 };
@@ -112,6 +152,14 @@ const styles = {
         color: 'red',
         marginBottom: '10px',
     },
+    toggleText: {
+        marginTop: '10px',
+        color: '#333',
+    },
+    toggleLink: {
+        color: '#007bff',
+        cursor: 'pointer',
+    },
 };
 
-export default Login;
+export default Auth;

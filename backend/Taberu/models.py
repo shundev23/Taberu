@@ -31,3 +31,15 @@ class Taberu(models.Model):
 
     def __str__(self):
         return self.title
+    
+class Restaurant(models.Model):
+    name = models.CharField(max_length=255)
+    category = models.CharField(max_length=255)
+    atmosphere = models.CharField(max_length=255)
+    taste = models.CharField(max_length=255)
+    egg_texture = models.CharField(max_length=255)
+    latitude = models.FloatField()
+    longitude = models.FloatField()
+    
+    def __str__(self):
+        return self.name
