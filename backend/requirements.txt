@@ -10,5 +10,4 @@ psycopg2-binary
 python-dotenv
 django-allauth
 dj-rest-auth
-social_django
 social-auth-app-django
