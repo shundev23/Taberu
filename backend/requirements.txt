@@ -9,3 +9,4 @@ crispy_bootstrap5
 psycopg2-binary
 python-dotenv
 django-allauth
+dj-rest-auth
