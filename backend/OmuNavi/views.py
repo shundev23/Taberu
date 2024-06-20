@@ -1,4 +1,3 @@
-# backend/your_app/views.py
 from rest_framework import viewsets
 from .models import User, Restaurant, Review, Favorite, Menu, Location
 from .serializers import UserSerializer, RestaurantSerializer, ReviewSerializer, FavoriteSerializer, MenuSerializer, LocationSerializer
