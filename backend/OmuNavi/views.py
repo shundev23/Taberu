@@ -1,6 +1,6 @@
-from rest_framework import viewsets
+from rest_framework import viewsets, generics
 from .models import User, Restaurant, Review, Favorite, Menu, Location
-from .serializers import UserSerializer, RestaurantSerializer, ReviewSerializer, FavoriteSerializer, MenuSerializer, LocationSerializer
+from .serializers import UserSerializer, RestaurantSerializer, ReviewSerializer, FavoriteSerializer, MenuSerializer, LocationSerializer, UserRegisterSerializer
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
@@ -25,3 +25,7 @@ class MenuViewSet(viewsets.ModelViewSet):
 class LocationViewSet(viewsets.ModelViewSet):
     queryset = Location.objects.all()
     serializer_class = LocationSerializer
+
+class UserRegisterView(generics.CreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserRegisterSerializer
