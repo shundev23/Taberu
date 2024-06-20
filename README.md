@@ -1,5 +1,5 @@
 # Project Name
-Taberu
+OmuNavi
 
 ## Overview
 This project is a web application developed using Django and React.

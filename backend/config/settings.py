@@ -37,22 +37,25 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
+
     'rest_framework.authtoken',
     'rest_framework',
+
     'dj_rest_auth',
     'dj_rest_auth.registration',
+
     'social_django',
     'corsheaders',
-    'Taberu',
-    'comment',
-    'staffroom',
     'crispy_forms',
     'imagekit',
     'crispy_bootstrap5',
+
+    'OmuNavi',
 ]
 
 MIDDLEWARE = [
@@ -130,20 +133,6 @@ ACCOUNT_EMAIL_VERIFICATION = 'optional'
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '<your-client-id>'
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '<your-client-secret>'
 
-# Database
-# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': os.getenv('DB_NAME'),
-#         'USER': os.getenv('DB_USER'),
-#         'PASSWORD': os.getenv('DB_PASSWORD'),
-#         'HOST': os.getenv('DB_HOST', 'localhost'),
-#         'PORT': os.getenv('DB_PORT', '5432'),
-#     }
-# }
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -154,9 +143,6 @@ DATABASES = {
         'PORT': os.getenv('DB_PORT', '5432'),
     }
 }
-
-
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -181,10 +167,6 @@ AUTH_PASSWORD_VALIDATORS = [
 
 AUTH_USER_MODEL = 'auth.User'
 
-
-# Internationalization
-# https://docs.djangoproject.com/en/4.2/topics/i18n/
-
 LANGUAGE_CODE = 'ja'
 
 TIME_ZONE = 'Asia/Tokyo'
@@ -193,20 +175,13 @@ USE_I18N = True
 
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.2/howto/static-files/
-
 STATIC_URL = 'static/'
-
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATICFILES_DIRS = [
-    BASE_DIR / Path("assets"),
-    os.path.join(BASE_DIR, "static"),
+    BASE_DIR  / 'assets',
+    BASE_DIR  / 'static',
 ]
 
 MEDIA_ROOT = BASE_DIR / Path('media')
@@ -220,8 +195,4 @@ REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': [
         'rest_framework.renderers.JSONRenderer',
     ],
-}
-
-REST_AUTH_REGISTER_SERIALIZERS = {
-    'REGISTER_SERIALIZER': 'Taberu.serializers.CustomRegisterSerializer',
 }
