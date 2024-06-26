@@ -14,4 +14,11 @@ body {
       monospace;
   }
 
-  /* 他のグローバルスタイルをここに追加 */
+  input:focus {
+    border-color: #F5B041;
+    box-shadow: 0 0 5px rgba(245, 176, 65, 0.5);
+  }
+
+  button:hover {
+    background-color: #E67E22;
+  }

@@ -2,9 +2,12 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 from django.urls import reverse_lazy
+from decouple import config
 
 # Load environment variables from .env file
 load_dotenv()
+
+TMDB_API_KEY = config('TMDB_API_KEY')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -68,15 +71,49 @@ MIDDLEWARE = [
 CORS_ALLOW_ALL_ORIGINS = True  # 開発中のみ許可
 CORS_ALLOW_CREDENTIALS = True  # クッキーを許可
 
-# CORS_ALLOWED_ORIGINS = [
-#     "http://localhost:3000",
-# ]
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+]
+
+CORS_ALLOW_HEADERS = [
+    'accept',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+]
+
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:3000',
+]
 
 CSRF_TRUSTED_ORIGINS = ['http://localhost:3000']
 CSRF_COOKIE_SECURE = False
 CSRF_COOKIE_HTTPONLY = False
 
 ROOT_URLCONF = 'config.urls'
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': 'debug.log',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}
 
 TEMPLATES = [
     {
@@ -127,16 +164,16 @@ ACCOUNT_EMAIL_VERIFICATION = 'optional'
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '<your-client-id>'
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '<your-client-secret>'
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DB_NAME', 'test_your_database_name'),
-        'USER': os.getenv('DB_USER', 'your_database_user'),
-        'PASSWORD': os.getenv('DB_PASSWORD', 'your_database_password'),
-        'HOST': os.getenv('DB_HOST', 'localhost'),
-        'PORT': os.getenv('DB_PORT', '5432'),
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': os.getenv('DB_NAME', 'test_your_database_name'),
+#         'USER': os.getenv('DB_USER', 'your_database_user'),
+#         'PASSWORD': os.getenv('DB_PASSWORD', 'your_database_password'),
+#         'HOST': os.getenv('DB_HOST', 'localhost'),
+#         'PORT': os.getenv('DB_PORT', '5432'),
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators

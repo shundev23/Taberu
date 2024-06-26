@@ -4,7 +4,7 @@ from .models import User, Restaurant, Review, Favorite, Menu, Location
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = '__all__'
+        fields = ['id', 'username', 'email']
 
 class RestaurantSerializer(serializers.ModelSerializer):
     class Meta:
@@ -45,4 +45,19 @@ class UserRegisterSerializer(serializers.ModelSerializer):
         )
         user.set_password(validated_data['password'])
         user.save()
+        return user
+
+class PasswordResetSerializer(serializers.Serializer):
+    email = serializers.EmailField()
+
+    def validate_email(self, value):
+        try:
+            user = User.objects.get(email=value)
+        except User.DoesNotExist:
+            raise serializers.ValidationError("User with this email does not exist.")
+        return value
+
+    def save(self):
+        email = self.validated_data['email']
+        user = User.objects.get(email=email)
         return user
